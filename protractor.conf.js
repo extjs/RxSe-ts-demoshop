@@ -53,7 +53,7 @@ if (process.env.RX_ENDPOINT_TYPE === "saucelabs") {
   configuration.multiCapabilities = [{
     browserName: process.env.RX_ENDPOINT_BROWSER,
     platform: process.env.RX_ENDPOINT_PLATFORM,
-    version: process.env.RX_ENDPOINT_VERSION,
+    version: process.env.RX_ENDPOINT_VERSION
   }];
   configuration.sauceUser = process.env.RX_ENDPOINT_USER;
   configuration.sauceKey = process.env.RX_ENDPOINT_KEY;
@@ -62,17 +62,30 @@ if (process.env.RX_ENDPOINT_TYPE === "saucelabs") {
     configuration.webDriverProxy = process.env.RX_PROXY;
   }
 
-  let capabilities = {};
-  try { capabilities = JSON.parse(process.env.RX_ENDPOINT_CAPABILITIES) } catch (e) { };
-  capabilities.browserName = process.env.RX_ENDPOINT_BROWSER;
-  capabilities.platform = process.env.RX_ENDPOINT_PLATFORM;
-  capabilities.version = process.env.RX_ENDPOINT_VERSION;
+  let customCapabilities = {};
+  try { customCapabilities = JSON.parse(process.env.RX_ENDPOINT_CAPABILITIES) } catch (e) { /* */ }
+  const capabilities = Object.assign({
+    browserName: process.env.RX_ENDPOINT_BROWSER,
+    platform: process.env.RX_ENDPOINT_PLATFORM,
+    version: process.env.RX_ENDPOINT_VERSION
+  }, customCapabilities);
+
 
   configuration.multiCapabilities = [capabilities];
   configuration.seleniumAddress = process.env.RX_ENDPOINT_GRID_URL;
+} else if (process.env.RX_ENDPOINT_TYPE === "custom") {
+  if (process.env.RX_PROXY) {
+    configuration.webDriverProxy = process.env.RX_PROXY;
+  }
+
+  let customCapabilities = {};
+  try { customCapabilities = JSON.parse(process.env.RX_ENDPOINT_CAPABILITIES) } catch (e) { /* */ }
+
+  configuration.multiCapabilities = [customCapabilities];
+  configuration.seleniumAddress = process.env.RX_ENDPOINT_GRID_URL;
 } else {
   let capabilities = {};
-  try { capabilities = JSON.parse(process.env.RX_ENDPOINT_CAPABILITIES) } catch (e) { };
+  try { capabilities = JSON.parse(process.env.RX_ENDPOINT_CAPABILITIES) } catch (e) { /* */ }
   configuration.capabilities = Object.assign({
     browserName: process.env.RX_ENDPOINT_BROWSER,
     operaOptions: {
