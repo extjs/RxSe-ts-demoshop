@@ -121,7 +121,10 @@ if (headless === "true") {
   }
 } else if (process.env.RX_DEBUG === "true" && configuration.capabilities.browserName === "chrome" && process.env.RX_SELOCITYPATH) {
   configuration.capabilities.chromeOptions = {
-    args: ["--load-extension=" + process.env.RX_SELOCITYPATH, "--auto-open-devtools-for-tabs"]
+    args: ["--load-extension=" + process.env.RX_SELOCITYPATH, "--auto-open-devtools-for-tabs"],
+    prefs: {
+      "devtools.preferences.currentDockState": "\"undocked\""
+    }
   };
 }
 
