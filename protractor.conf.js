@@ -101,7 +101,10 @@ if (process.env.RX_ENDPOINT_TYPE === "saucelabs") {
     }
   }
 
-  configuration.seleniumAddress = "http://localhost:4444/wd/hub";
+  if (!process.env.RX_USE_WEBDRIVER_MANAGER) {
+    configuration.seleniumAddress = "http://localhost:4444/wd/hub";
+  }
+  configuration.seleniumPort = 4444;
 }
 
 const headless = process.env.RX_ENDPOINT_HEADLESS;
