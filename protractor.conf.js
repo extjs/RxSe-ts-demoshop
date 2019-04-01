@@ -5,7 +5,7 @@ const Promise = require("es6-promise").Promise;
 /** @type {prot.Config} */
 const configuration = {
   framework: "jasmine",
-  specs: ["dist/test/tests/*.js"],
+  specs: [`dist/${process.env.RX_TESTFOLDER || "test/tests"}/**/*.js`],
   // You could set no globals to true to avoid jQuery '$' and protractor '$'
   // collisions on the global namespace.
   noGlobals: true,
