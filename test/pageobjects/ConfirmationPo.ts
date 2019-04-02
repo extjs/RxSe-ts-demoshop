@@ -2,6 +2,7 @@
 
 import { browser, element, by, ExpectedConditions } from 'protractor';
 
+// Additional data: {"img":"screenshots/4899bd72-484f-7466-15d2-eb2d4339310d.png"}
 export class ConfirmationPo {
   // Generated elements
   private get totalAmount() { return by.css('.woocommerce-order ul .woocommerce-Price-amount'); }
