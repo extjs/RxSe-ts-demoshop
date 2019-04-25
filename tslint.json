@@ -13,7 +13,10 @@
       "single"
     ],
     "trailing-comma": false,
-    "max-line-length": false
+    "max-line-length": false,
+    "protractor-no-identical-title": true
   },
-  "rulesDirectory": []
+  "rulesDirectory": [
+    "./node_modules/@rxse/webtestit-lint-rules/dist"
+  ]
 }

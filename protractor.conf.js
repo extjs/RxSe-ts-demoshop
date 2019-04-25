@@ -1,6 +1,7 @@
 // @ts-check
 const prot = require("protractor");
 const Promise = require("es6-promise").Promise;
+const helpers = require('./protractor-helpers');
 
 /** @type {prot.Config} */
 const configuration = {
@@ -13,23 +14,7 @@ const configuration = {
   SELENIUM_PROMISE_MANAGER: false,
   onPrepare: function () {
     prot.browser.ignoreSynchronization = true;
-
-    const jasmineReporters = require('jasmine-reporters');
-    const junitReporter = new jasmineReporters.JUnitXmlReporter({
-
-      // setup the output path for the junit reports
-      savePath: 'temp-reports/',
-
-      // consolidate all true:
-      //   output/junitresults.xml
-      //
-      // consolidate all set to false:
-      //   output/junitresults-example1.xml
-      //   output/junitresults-example2.xml
-      consolidateAll: true,
-      filePrefix: process.env.TEST_REPORT_FILENAME
-    });
-    jasmine.getEnv().addReporter(junitReporter);
+    helpers.onPrepare();
   },
   jasmineNodeOpts: {
     defaultTimeoutInterval: parseInt(process.env.RX_DEFAULT_TIMEOUT, 10)
