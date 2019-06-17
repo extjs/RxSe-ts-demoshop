@@ -9,7 +9,7 @@ const {
   RX_SCREENSHOT_ON_FAILURE } = process.env;
 
 module.exports = {
-  onPrepare: function () {
+  onPrepare: async function () {
     if (RX_SCREENSHOT_ON_FAILURE === "true") {
       jasmine.Spec.prototype.execute = function (onComplete, enabled) {
         var self = this;
@@ -74,11 +74,12 @@ module.exports = {
       });
     }
 
+    const session = await prot.browser.getSession();
     const jasmineReporters = require('jasmine-reporters');
     const junitReporter = new jasmineReporters.JUnitXmlReporter({
       savePath: 'temp-reports/',
       consolidateAll: true,
-      filePrefix: TEST_REPORT_FILENAME
+      filePrefix: `${session.getId()}-${TEST_REPORT_FILENAME}`
     });
 
     const currentSpecReporter = {

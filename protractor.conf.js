@@ -14,7 +14,7 @@ const configuration = {
   SELENIUM_PROMISE_MANAGER: false,
   onPrepare: function () {
     prot.browser.ignoreSynchronization = true;
-    helpers.onPrepare();
+    return helpers.onPrepare();
   },
   jasmineNodeOpts: {
     defaultTimeoutInterval: parseInt(process.env.RX_DEFAULT_TIMEOUT, 10)
@@ -35,11 +35,16 @@ if (process.env.RX_ENDPOINT_TYPE === "saucelabs") {
     configuration.webDriverProxy = process.env.RX_PROXY;
   }
 
-  configuration.multiCapabilities = [{
+  /** @type {prot.Config["capabilities"]} */
+  let capabilities = {};
+  try { capabilities = JSON.parse(process.env.RX_ENDPOINT_CAPABILITIES) } catch (e) { /* */ }
+  capabilities = Object.assign({
     browserName: process.env.RX_ENDPOINT_BROWSER,
     platform: process.env.RX_ENDPOINT_PLATFORM,
     version: process.env.RX_ENDPOINT_VERSION
-  }];
+  }, capabilities);
+
+  configuration.multiCapabilities = [capabilities];
   configuration.sauceUser = process.env.RX_ENDPOINT_USER;
   configuration.sauceKey = process.env.RX_ENDPOINT_KEY;
 } else if (process.env.RX_ENDPOINT_TYPE === "seleniumgrid") {
@@ -47,13 +52,14 @@ if (process.env.RX_ENDPOINT_TYPE === "saucelabs") {
     configuration.webDriverProxy = process.env.RX_PROXY;
   }
 
-  let customCapabilities = {};
-  try { customCapabilities = JSON.parse(process.env.RX_ENDPOINT_CAPABILITIES) } catch (e) { /* */ }
-  const capabilities = Object.assign({
+  /** @type {prot.Config["capabilities"]} */
+  let capabilities = {};
+  try { capabilities = JSON.parse(process.env.RX_ENDPOINT_CAPABILITIES) } catch (e) { /* */ }
+  capabilities = Object.assign({
     browserName: process.env.RX_ENDPOINT_BROWSER,
     platform: process.env.RX_ENDPOINT_PLATFORM,
     version: process.env.RX_ENDPOINT_VERSION
-  }, customCapabilities);
+  }, capabilities);
 
 
   configuration.multiCapabilities = [capabilities];
@@ -63,12 +69,14 @@ if (process.env.RX_ENDPOINT_TYPE === "saucelabs") {
     configuration.webDriverProxy = process.env.RX_PROXY;
   }
 
-  let customCapabilities = {};
-  try { customCapabilities = JSON.parse(process.env.RX_ENDPOINT_CAPABILITIES) } catch (e) { /* */ }
+  /** @type {prot.Config["capabilities"]} */
+  let capabilities = {};
+  try { capabilities = JSON.parse(process.env.RX_ENDPOINT_CAPABILITIES) } catch (e) { /* */ }
 
-  configuration.multiCapabilities = [customCapabilities];
+  configuration.multiCapabilities = [capabilities];
   configuration.seleniumAddress = process.env.RX_ENDPOINT_GRID_URL;
 } else {
+  /** @type {prot.Config["capabilities"]} */
   let capabilities = {};
   try { capabilities = JSON.parse(process.env.RX_ENDPOINT_CAPABILITIES) } catch (e) { /* */ }
   configuration.capabilities = Object.assign({
