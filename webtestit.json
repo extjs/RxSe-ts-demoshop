@@ -1,26 +1,10 @@
 {
   "defaultTestName": "should... ",
-  "jiraCredentials": {
-    "host": "",
-    "issueType": "Task",
-    "password": "",
-    "projectKey": "TEST",
-    "protocol": "http",
-    "statusCompletedName": "Done",
-    "statusToDoName": "To Do",
-    "strictSSL": false,
-    "username": ""
-  },
   "pageObjectFolder": "test/pageobjects",
   "projectName": "ts-demoshop",
   "rootPackage": "uitest",
   "targetFramework": "Protractor",
   "targetLanguage": "ts",
   "testFolder": "test/tests",
-  "testrailCredentials": {
-    "host": "",
-    "password": "",
-    "user": ""
-  },
-  "version": "1.3.0"
+  "version": "1.4.0"
 }

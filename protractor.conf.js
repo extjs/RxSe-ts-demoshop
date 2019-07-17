@@ -47,6 +47,9 @@ if (process.env.RX_ENDPOINT_TYPE === "saucelabs") {
   configuration.multiCapabilities = [capabilities];
   configuration.sauceUser = process.env.RX_ENDPOINT_USER;
   configuration.sauceKey = process.env.RX_ENDPOINT_KEY;
+  if (process.env.RX_SAUCELABS_DATACENTER) {
+    configuration.sauceRegion = process.env.RX_SAUCELABS_DATACENTER;
+  }
 } else if (process.env.RX_ENDPOINT_TYPE === "seleniumgrid") {
   if (process.env.RX_PROXY) {
     configuration.webDriverProxy = process.env.RX_PROXY;
