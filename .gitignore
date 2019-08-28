@@ -1,4 +1,5 @@
+.webtestit/
 node_modules
 dist/
 reports/
-.vscode/
+temp-reports/
