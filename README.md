@@ -1,6 +1,6 @@
 # Ranorex Webtestit TypeScript Demoshop
 
-This is an example of how testing a [simple webshop](http://demoshop.webtestit.com/) could be solved with [Ranorex Webtestit](https://www.ranorex.com/webtestit), Pyton and TypeScript.
+This is an example of how testing a [simple webshop](http://demoshop.webtestit.com/) could be solved with [Ranorex Webtestit](https://www.ranorex.com/webtestit), Python and TypeScript.
 
 ## Ranorex Webtestit
 
