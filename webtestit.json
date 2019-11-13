@@ -6,5 +6,5 @@
   "targetFramework": "Protractor",
   "targetLanguage": "ts",
   "testFolder": "test/tests",
-  "version": "1.9.0"
+  "version": "1.9.1"
 }
