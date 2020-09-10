@@ -1,14 +1,14 @@
 # Sencha WebTestIt TypeScript Demoshop
 
-This is an example of how testing a [simple webshop](http://demoshop.webtestit.com/) could be solved with [Sencha WebTestIt](https://docs.sencha.com/webtestit.html), Python and TypeScript.
+This is an example of how testing a [simple webshop](http://demoshop.webtestit.com/) could be solved with [Sencha WebTestIt](https://www.sencha.com/products/webtestit/), Python and TypeScript.
 
 ## Sencha WebTestIt
 
-Sencha WebTestIt is a lightweight IDE optimized for building UI web tests with Selenium, Unittest or Protractor. It supports developing tests in Java and TypeScript and includes built-in best practices such as the creation of Page Objects, separating test code from the testing framework, creating modular and reusable tests, cross-browser testing, [and more](https://docs.sencha.com/webtestit.html).
+Sencha WebTestIt is a lightweight IDE optimized for building UI web tests with Selenium, Unittest or Protractor. It supports developing tests in Java and TypeScript and includes built-in best practices such as the creation of Page Objects, separating test code from the testing framework, creating modular and reusable tests, cross-browser testing, [and more](https://www.sencha.com/products/webtestit/).
 
 ## Requirements
 
-* [Sencha WebTestIt](https://docs.sencha.com/webtestit.html)
+* [Sencha WebTestIt](https://www.sencha.com/products/webtestit/)
 
 ## Instructions
 
