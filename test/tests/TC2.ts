@@ -1,4 +1,4 @@
-// Ranorex Webtestit Test File
+// Sencha WebTestIt Test File
 
 import { browser } from 'protractor';
 

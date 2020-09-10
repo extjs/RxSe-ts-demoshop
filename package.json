@@ -2,10 +2,10 @@
   "name": "webtestit-typescript-protractor",
   "version": "1.0.0",
   "description": "Protractor with TypeScript",
-  "author": "Ranorex GmbH",
+  "author": "Sencha GmbH",
   "license": "MIT",
   "keywords": [
-    "Ranorex",
+    "Sencha",
     "e2e",
     "test-automation",
     "protractor",
